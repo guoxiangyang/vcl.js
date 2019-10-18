@@ -1,0 +1,17 @@
+{
+    "name": "vcl.js",
+    "version": "0.0.1",
+    "description": "Delphi like VCL lib running in browser.",
+    "main": "index.js",
+    "dependencies": {
+    },
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:guoxiangyang/vcl.js.git"
+    },
+    "keywords": [
+    ],
+    "author": "Gxy",
+    "license": "GPL"
+}
