@@ -164,6 +164,7 @@ Object.defineProperties(TControl.prototype, {
         get : function () { return this.FCaption;},
         set : function (Value) {
             this.FCaption = Value;
+            console.log(Value, this.div);
             this.div.text(Value);
         }
     },

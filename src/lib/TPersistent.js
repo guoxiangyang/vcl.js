@@ -10,13 +10,12 @@ TPersistent.prototype.read = function (values) {
             do_read(cls.super_, values);
         }
         if (Array.isArray(cls.Published)) {
-            console.log(cls.name, cls.Published);
             for (var i = 0; i < cls.Published.length; i++) {
                 var key = cls.Published[i];
                 var value = values[key];
                 if (typeof value !== 'undefined') {
                     component[key] = value;
-                    console.log(`[${component.constructor.name}] set ${key} to ${value}`);
+                    // console.log(`[${cls.name}]@[${component.constructor.name}] set ${key} to ${value}`);
                 }
             }
             
