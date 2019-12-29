@@ -16,6 +16,7 @@ TPersistent.prototype.read = function (values) {
                 var value = values[key];
                 if (typeof value !== 'undefined') {
                     component[key] = value;
+                    console.log(`[${component.constructor.name}] set ${key} to ${value}`);
                 }
             }
             

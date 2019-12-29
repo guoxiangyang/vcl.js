@@ -270,7 +270,7 @@ VCL.prototype.load_modules = function (modules) {
 // function InitInheritedComponent(Instance: TComponent; RootAncestor: TClass): Boolean;
 VCL.prototype.InitInheritedComponent = function (Instance, RootAncestor) {
     function InitComponent(obj, dfm) {
-        Instance.read(dfm);
+        obj.read(dfm);
         for (var key in dfm) {
             var value = dfm[key];
             if (typeof value !== 'object') { continue; };
@@ -286,7 +286,9 @@ VCL.prototype.InitInheritedComponent = function (Instance, RootAncestor) {
             }
         }
     }
-    return InitComponent.bind(this)(Instance, Instance.dfm);
+    if (Instance.dfm) {
+        InitComponent.bind(this)(Instance, Instance.dfm);
+    };
 }
 
 VCL.prototype.array_to_set = function (set) {
