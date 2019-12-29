@@ -13,7 +13,7 @@ function Label1Click(Sender) {
 };
 
 module.inherit("TPropertyDesigner", "TForm");
-module.require = "TForm";
+module.require = ["TForm", "TLabel", "TPanel", "TEdit"];
 module.exports = TPropertyDesigner;
 
 TPropertyDesigner.prototype.dfm = {
@@ -27,6 +27,7 @@ TPropertyDesigner.prototype.dfm = {
     Banner1 : {
         cls      : "TLabel",
         Align    : 'alTop',
+        Height   : 100,
         Caption  : "Designer",
         OnClick  : Banner1Click,
     },
@@ -36,7 +37,6 @@ TPropertyDesigner.prototype.dfm = {
         Label1 : {
             cls     : "TLabel",
             Align   : 'alLeft',
-            Width   : 100,
             Caption : "Left",
             OnClick  : Label1Click,
         },
@@ -51,7 +51,6 @@ TPropertyDesigner.prototype.dfm = {
         Label2 : {
             cls     : "TLabel",
             Align   : 'alLeft',
-            Width   : 100,
             Caption : "Top",
         },
         Value2 : {

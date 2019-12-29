@@ -224,7 +224,7 @@ TWinControl.prototype.AlignControls = function (AControl, Rect) {
                         // The AnchorRules.Y is the original top
                         NewTop = ParentSize.Y - (Self.FOriginalParentSize.Y - Self.FAnchorRules.Y)
                     }
-                } else if (!('akTop' in Anchors)) {
+                } else if (!('akTop' in Control.Anchors)) {
                     // The AnchorRules.Y is the original middle of the control
                     NewTop = MulDiv(Self.FAnchorRules.Y, ParentSize.Y, Self.FOriginalParentSize.Y) - (NewHeight / 2);
                 }
@@ -408,7 +408,7 @@ TWinControl.prototype.AlignControl = function (AControl) {
     } else {
         this.DisableAlign();
         var Rect = this.ClientRect;
-        console.log(`${this.Caption}: ClientRect=${JSON.stringify(Rect)} `);
+        // console.log(`${this.Caption}: ClientRect=${JSON.stringify(Rect)} `);
         this.AlignControls(AControl, Rect);
         this.Exclude(this.FControlState, 'csAlignmentNeeded');
         this.EnableAlign();

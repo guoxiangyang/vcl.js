@@ -3,7 +3,7 @@ function TForm2(AOwner) {
 };
 
 module.inherit("TForm2", "TForm");
-module.require = "TForm";
+module.require = ["TForm", "TPanel"];
 module.exports = TForm2;
 
 TForm2.prototype.dfm = {
@@ -25,7 +25,7 @@ TForm2.prototype.dfm = {
     },
     Panel2: {
         cls      : "TPanel",
-        Align    : "alBottom",
+        Align    : "alClient",
         Caption  : 'Panel2',
         Left     : 0,
         Top      : 50,
@@ -34,10 +34,11 @@ TForm2.prototype.dfm = {
         TabOrder : 1,
         Panel3: {
             cls      : "TPanel",
-            Align    : "alTop",
+            Align    : "alBottom",
             Left     : 40,
             Top      : 80,
             Height   : 80,
+            Width    : 80,
             Caption  : 'Panel3',
             TabOrder : 1,
         }

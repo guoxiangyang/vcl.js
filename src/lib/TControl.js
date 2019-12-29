@@ -102,7 +102,7 @@ TControl.prototype.SetBounds = function (ALeft, ATop, AWidth, AHeight) {
         this.FTop    = ATop;
         this.FWidth  = AWidth;
         this.FHeight = AHeight;
-        console.log(`[SetBounds][${this.Caption}/ ${this.constructor.name}]: ${this.FLeft} ${this.FTop} ${this.FWidth} ${this.FHeight}`);
+        // console.log(`[SetBounds][${this.Caption}/ ${this.constructor.name}]: ${this.FLeft} ${this.FTop} ${this.FWidth} ${this.FHeight}`);
         this.UpdateAnchorRules();
         // Invalidate;
         // Perform(WM_WINDOWPOSCHANGED, 0, 0);
