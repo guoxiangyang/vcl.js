@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>title</title>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="vcl.js"></script>
+    </head>
+    <style></style>
+    <body>
+        <div id="Desktop1"></div>
+        <div id="Desktop2"></div>
+    </body>
+    <script>
+     $(document).ready(function () {
+         var vcl = new VCL();
+         vcl.init(function (err, cls) {
+             vcl.require(["TForm2", "TPanel", "TLabel", "TButton", "TEdit", "TMemo", "TComboBox"], function (err, cls) {
+                 var form2  = vcl.create("TForm2");
+                 form2.div.appendTo($("#Desktop1"));
+             });
+         });
+     });
+    </script>
+</html>

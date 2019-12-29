@@ -1,0 +1,29 @@
+__super = "TObject";
+function TPersistent() {
+    this.vcl.Cls(__super).call(this);
+    // console.log(arguments.callee.name);
+    this.FPublished = [];
+};
+TPersistent.prototype.read = function (obj) {
+    for (var i = 0; i < this.FPublished.length; i++) {
+        var key = this.FPublished[i];
+        var value = obj[key];
+        if (typeof value !== 'undefined') {
+            this[key] = value;
+        }
+    }
+};
+Object.defineProperties(TPersistent.prototype, {
+    Published : {
+        get : function () {
+            return this.FPublished;
+        },
+        set : function (Value) {
+            this.FPublished = this.FPublished.concat(Value);
+            return this.FPublished;
+        }
+    }
+});
+module.inherit("TPersistent", __super);
+module.require = __super;
+module.exports = TPersistent;
