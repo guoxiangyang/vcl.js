@@ -77,7 +77,7 @@ TWinControl.prototype.UpdateShowing = function () {
             this.CreateHandle();
         }
         if (this.FWinControls) {
-            for (var I = 0; I <  this.FWinControls.Count; I++) {
+            for (var I = 0; iI <  this.FWinControls.Count; I++) {
                 this.FWinControls[I].UpdateShowing();
             }
         }
@@ -408,7 +408,6 @@ TWinControl.prototype.AlignControl = function (AControl) {
     } else {
         this.DisableAlign();
         var Rect = this.ClientRect;
-        console.log(`${this.Caption}: ClientRect=${JSON.stringify(Rect)} `);
         this.AlignControls(AControl, Rect);
         this.Exclude(this.FControlState, 'csAlignmentNeeded');
         this.EnableAlign();

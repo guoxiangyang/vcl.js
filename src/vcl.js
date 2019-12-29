@@ -278,8 +278,8 @@ VCL.prototype.InitInheritedComponent = function (Instance, RootAncestor) {
                 var e = this.create(value.cls, obj);
                 if (e) {
                     Instance[key] = e;
-                    InitComponent.bind(this)(e, value);
                     e.Parent = obj;
+                    InitComponent.bind(this)(e, value);
                 } else {
                     console.error(value.cls, "not defined");
                 }

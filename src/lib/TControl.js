@@ -93,17 +93,20 @@ TControl.prototype.SetBounds = function (ALeft, ATop, AWidth, AHeight) {
     this.div.css("top",    ATop);
     this.div.css("width",  AWidth);
     this.div.css("height", AHeight);
-    if (ALeft != this.FLeft || ATop != this.FTop
-        || AWidth != this.FWidth || AHeight != this.AHeight) {
+    if (ALeft != this.FLeft
+        || ATop != this.FTop
+        || AWidth != this.FWidth
+        || AHeight != this.AHeight) {
         // InvalidateControl(Visible, False);
         this.FLeft   = ALeft;
         this.FTop    = ATop;
         this.FWidth  = AWidth;
         this.FHeight = AHeight;
-        this.UpdateAnchorRules;
+        console.log(`[SetBounds][${this.Caption}/ ${this.constructor.name}]: ${this.FLeft} ${this.FTop} ${this.FWidth} ${this.FHeight}`);
+        this.UpdateAnchorRules();
         // Invalidate;
         // Perform(WM_WINDOWPOSCHANGED, 0, 0);
-        // RequestAlign;
+        this.RequestAlign();
         // if not (csLoading in ComponentState) then Resize;
     }
 };
