@@ -3,7 +3,7 @@ function TForm2(AOwner) {
 };
 
 module.inherit("TForm2", "TForm");
-module.require = ["TForm", "TPanel"];
+module.require = ["TForm"];
 module.exports = TForm2;
 
 TForm2.prototype.dfm = {

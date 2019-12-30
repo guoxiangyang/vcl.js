@@ -234,23 +234,36 @@ VCL.prototype.load_modules = function (modules) {
                     module.exports = {};
                     module.exports[name] = func;
                 }
+                var require = module.require;
+                if (typeof require === 'string') {
+                    require = [require];
+                }
                 for (var name in module.exports) {
                     var cls = module.exports[name];
                     if (typeof cls === 'function') {
                         this.vcl.cls[name] = cls;
+                        if (cls.prototype.dfm) {
+                            function enum_require(obj) {
+                                for (var key in obj) {
+                                    var value = obj[key];
+                                    if (typeof value === 'object' && typeof value.cls === 'string') {
+                                        var cls = value.cls;
+                                        if (require.indexOf(cls) < 0) {
+                                            require.push(cls);
+                                        }
+                                    }
+                                }
+                            };
+                            enum_require(cls.prototype.dfm);
+                        }
                         // console.log("[Class load]" + name);
                     } else {
                         console.error("class is not a function:", name, cls);
                     }
                 }
-
-                var require = module.require;
-                if (typeof require === 'string') {
-                    require = [require];
-                }
                 this.require = require;
-                if (module.require) {
-                    this.vcl.require(module.require, function (err) {
+                if (Array.isArray(require) && require.length > 0) {
+                    this.vcl.require(require, function (err) {
                         this.loaded = true;
                         setTimeout(this.vcl.process_tasks.bind(this.vcl), 1);
                     }.bind(this));
