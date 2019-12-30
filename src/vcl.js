@@ -290,6 +290,7 @@ VCL.prototype.InitInheritedComponent = function (Instance, RootAncestor) {
             if (value.cls) {
                 var e = this.create(value.cls, obj);
                 if (e) {
+                    e.Form = Instance;
                     e.Name = key;
                     Instance[key] = e;
                     e.Parent = obj;
@@ -300,6 +301,7 @@ VCL.prototype.InitInheritedComponent = function (Instance, RootAncestor) {
             }
         }
     }
+    Instance.Form = Instance;
     if (Instance.dfm) {
         InitComponent.bind(this)(Instance, Instance.dfm);
     };

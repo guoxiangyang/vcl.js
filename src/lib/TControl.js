@@ -40,9 +40,11 @@ function TControl(AOwner) {
     if (!this.div) {
         this.div = $("<div/>");
     }
+    $('<span id=caption nowrap/>').appendTo(this.div);
     this.div.data("vcl", this);
     this.init_css();
     this.div.attr("draggable", "false");
+    this.div.click(this.on_click.bind(this));
     this.FOnClick = null;
     this.FAnchors = {
         akLeft : true,
@@ -54,16 +56,28 @@ function TControl(AOwner) {
 };
 TControl.Published = ['Left', 'Top', 'Width', 'Height'];
 
+TControl.prototype.on_click = function (e) {
+    console.log('[mouse move]', this.Caption);
+    this.div.css("border-style", "dashed");
+    this.div.css("border-color", "red");
+    this.Form.show_anchors(this);
+    e.stopPropagation(); 
+};
 TControl.prototype.AnchorAlign = {
-    'alNone'   : {'akLeft' : true,  'akTop' : true},
-    'alTop'    : {'akLeft' : true,  'akTop' : true, 'akRight' : true},
-    'alBottom' : {'akLeft' : true,  'akRight' : true, 'akBottom' : true},
-    'alLeft'   : {'akLeft' : true,  'akTop' : true, 'akBottom' : true},
-    'alRight'  : {'akRight' : true, 'akTop' : true, 'akBottom' : true},
-    'alClient' : {'akLeft' : true,  'akTop' : true, 'akRight' : true, 'akBottom' : true},
-    'alCustom' : {'akLeft' : true,  'akTop' : true}
+    'alNone'   : {'akLeft'  : true, 'akTop'   : true},
+    'alTop'    : {'akLeft'  : true, 'akTop'   : true, 'akRight'  : true},
+    'alBottom' : {'akLeft'  : true, 'akRight' : true, 'akBottom' : true},
+    'alLeft'   : {'akLeft'  : true, 'akTop'   : true, 'akBottom' : true},
+    'alRight'  : {'akRight' : true, 'akTop'   : true, 'akBottom' : true},
+    'alClient' : {'akLeft'  : true, 'akTop'   : true, 'akRight'  : true, 'akBottom' : true},
+    'alCustom' : {'akLeft'  : true, 'akTop'   : true}
 };
 
+TControl.prototype.ClientToScreen = function (Point) {
+    
+};
+TControl.prototype.ScreenToClient = function (Point) {
+};
 
 TControl.prototype.init_css = function () {
     if (!this.css) {
@@ -167,8 +181,7 @@ Object.defineProperties(TControl.prototype, {
         get : function () { return this.FCaption;},
         set : function (Value) {
             this.FCaption = Value;
-            // console.log(Value, this.div);
-            this.div.text(Value);
+            this.div.find("span").first().text(Value);
         }
     },
     OnClick : {
