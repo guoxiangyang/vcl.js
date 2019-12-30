@@ -48,6 +48,12 @@ TPropertyDesigner.prototype.dfm = {
             cls    : "TEdit",
         }
     },
+    Panel2: {
+        cls    : "TPanel",
+        Align  : 'alTop',
+        Top    : 20,
+        Height : 100,
+    },
     Item2 : {
         cls : "TPanel",
         Align    : 'alTop',

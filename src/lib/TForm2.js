@@ -34,13 +34,33 @@ TForm2.prototype.dfm = {
         TabOrder : 1,
         Panel3: {
             cls      : "TPanel",
+            Align    : "alLeft",
+            Left     : 40,
+            Top      : 80,
+            Height   : 80,
+            Width    : 100,
+            Caption  : 'Panel3',
+            TabOrder : 1,
+        },
+        Panel4: {
+            cls      : "TPanel",
+            Align    : "alClient",
+            Left     : 40,
+            Top      : 80,
+            Height   : 80,
+            Width    : 200,
+            Caption  : 'Panel4',
+            TabOrder : 1,
+        },
+        Panel5: {
+            cls      : "TPanel",
             Align    : "alRight",
             Left     : 40,
             Top      : 80,
             Height   : 80,
-            Width    : 80,
-            Caption  : 'Panel3',
+            Width    : 10,
+            Caption  : 'Panel5',
             TabOrder : 1,
-        }
+        },
     }
 }
