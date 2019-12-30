@@ -57,9 +57,9 @@ function TControl(AOwner) {
 TControl.Published = ['Left', 'Top', 'Width', 'Height'];
 
 TControl.prototype.on_click = function (e) {
-    console.log('[mouse move]', this.Caption);
-    this.div.css("border-style", "dashed");
-    this.div.css("border-color", "red");
+    // console.log('[mouse move]', this.Caption);
+    // this.div.css("border-style", "dashed");
+    // this.div.css("border-color", "red");
     this.Form.show_anchors(this);
     e.stopPropagation(); 
 };

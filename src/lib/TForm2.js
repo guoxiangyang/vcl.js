@@ -45,7 +45,7 @@ TForm2.prototype.dfm = {
         Panel4: {
             cls      : "TPanel",
             Align    : "alClient",
-            Left     : 40,
+            Left     : 60,
             Top      : 80,
             Height   : 80,
             Width    : 200,
@@ -55,7 +55,7 @@ TForm2.prototype.dfm = {
         Panel5: {
             cls      : "TPanel",
             Align    : "alRight",
-            Left     : 40,
+            Left     : 80,
             Top      : 80,
             Height   : 80,
             Width    : 10,
