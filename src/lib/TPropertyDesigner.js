@@ -4,12 +4,13 @@ function TPropertyDesigner(AOwner) {
 };
 
 function Banner1Click(Sender) {
-    console.log(this.Banner1);
-    this.Banner1.Caption = "asdfasdfasfd";
+    // console.log(this);
+    this.Banner1.Caption = (new Date()).toString();
 };
 
 function Label1Click(Sender) {
-    this.Label1.Caption = "asdfasdfasfd";
+    // console.log(this);
+    this.Label1.Caption = parseInt(this.Label1.Caption, 10) + 1;
 };
 
 module.inherit("TPropertyDesigner", "TForm");
@@ -27,17 +28,19 @@ TPropertyDesigner.prototype.dfm = {
     Banner1 : {
         cls      : "TLabel",
         Align    : 'alTop',
-        Height   : 100,
+        Top      : 0,
+        Height   : 30,
         Caption  : "Designer",
         OnClick  : Banner1Click,
     },
     Item1 : {
         cls    : "TPanel",
         Align  : 'alTop',
+        Top      : 10,
         Label1 : {
             cls     : "TLabel",
             Align   : 'alLeft',
-            Caption : "Left",
+            Caption : "1",
             OnClick  : Label1Click,
         },
         Value1 : {
@@ -48,6 +51,7 @@ TPropertyDesigner.prototype.dfm = {
     Item2 : {
         cls : "TPanel",
         Align    : 'alTop',
+        Top      : 30,
         Label2 : {
             cls     : "TLabel",
             Align   : 'alLeft',

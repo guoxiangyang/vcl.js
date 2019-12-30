@@ -14,10 +14,10 @@
      $(document).ready(function () {
          var vcl = new VCL();
          vcl.init(function (err, cls) {
-             /* vcl.require(["TForm2"], function (err, cls) {
-              *     var form2  = vcl.create("TForm2");
-              *     form2.div.appendTo($("#Desktop1"));
-              * }); */
+             vcl.require(["TForm2"], function (err, cls) {
+                 var form2  = vcl.create("TForm2");
+                 form2.div.appendTo($("#Desktop1"));
+             });
              vcl.require(["TPropertyDesigner"], function (err, cls) {
                  var form2  = vcl.create("TPropertyDesigner");
                  form2.div.appendTo($("#Desktop2"));

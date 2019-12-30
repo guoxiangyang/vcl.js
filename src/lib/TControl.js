@@ -167,7 +167,7 @@ Object.defineProperties(TControl.prototype, {
         get : function () { return this.FCaption;},
         set : function (Value) {
             this.FCaption = Value;
-            console.log(Value, this.div);
+            // console.log(Value, this.div);
             this.div.text(Value);
         }
     },
@@ -177,7 +177,10 @@ Object.defineProperties(TControl.prototype, {
             if (typeof Value === 'function') {
                 console.log(typeof Value, Value);
                 this.FOnClick = Value;
-                this.div.click(Value.bind(this));
+                var form = this;
+                while (form.Parent) { form = form.Parent;};
+                console.log("form=", form);
+                this.div.click(Value.bind(form));
             }
         }
     },

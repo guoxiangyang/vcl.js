@@ -5,6 +5,7 @@ function TComponent(AOwner) {
     this.FComponentStyle = {};
     this.FComponents  = [];
     this.FOwner       = null;
+    this.FName        = '';
     this.Include(this.FComponentStyle, ['csInheritable']);
     // this.vcl.Cls(__super).call(this);
     if (AOwner) {
@@ -17,8 +18,15 @@ Object.defineProperties(TComponent.prototype, {
     Owner : {
         get : function () { return this.FOwner; }
     }
+    // Name : {
+    //     get : function () { return this.FName; }
+    //     set : this.SetName;
+    // }
 });
 
+// TComponent.prototype.SetName = function (Value) {
+//     this.FName = Value;
+// };
 TComponent.prototype.InsertComponent = function (AComponent) {
     AComponent.ValidateContainer(this);
     this.ValidateRename(AComponent, '', AComponent.FName);

@@ -8,9 +8,9 @@ module.exports = TForm2;
 
 TForm2.prototype.dfm = {
     cls      : "TForm2",
-    Left     : 100,
+    Left     : 500,
     Top      : 100,
-    Width    : 800,
+    Width    : 500,
     Height   : 500,
     Caption  : "TForm2",
     Panel1 : {
@@ -25,7 +25,7 @@ TForm2.prototype.dfm = {
     },
     Panel2: {
         cls      : "TPanel",
-        Align    : "alClient",
+        Align    : "alBottom",
         Caption  : 'Panel2',
         Left     : 0,
         Top      : 50,
@@ -34,7 +34,7 @@ TForm2.prototype.dfm = {
         TabOrder : 1,
         Panel3: {
             cls      : "TPanel",
-            Align    : "alBottom",
+            Align    : "alRight",
             Left     : 40,
             Top      : 80,
             Height   : 80,
