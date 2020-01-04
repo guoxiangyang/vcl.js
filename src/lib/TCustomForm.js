@@ -114,5 +114,5 @@ TCustomForm.prototype.hide_anchors = function () {
 //     // }
 // }
 module.inherit("TCustomForm", "TScrollingWinControl");
-module.require = "TScrollingWinControl";
+// module.require = "TScrollingWinControl";
 module.exports = TCustomForm;

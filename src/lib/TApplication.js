@@ -16,5 +16,5 @@ TApplication.prototype.UpdateVisible = function () {
     // do show/hide application
 };
 module.inherit("TApplication", __super);
-module.require = __super;
+// module.require = __super;
 module.exports = TApplication;

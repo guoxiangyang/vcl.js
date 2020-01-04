@@ -4,5 +4,5 @@ function TForm(AOwner) {
 
 
 module.inherit("TForm", "TCustomForm");
-module.require = "TCustomForm";
+// module.require = "TCustomForm";
 module.exports = TForm;

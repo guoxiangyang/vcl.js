@@ -57,5 +57,5 @@ TButtonControl.prototype.css = {
 }
 
 module.inherit("TButtonControl", "TWinControl");
-module.require = "TWinControl";
+// module.require = "TWinControl";
 module.exports = TButtonControl;

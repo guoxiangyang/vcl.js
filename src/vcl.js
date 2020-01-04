@@ -201,10 +201,9 @@ VCL.prototype.load_modules = function (modules) {
                     ctor      : ctor,
                     superCtor : superCtor
                 });
-                // if (require.indexOf(superCtor) < 0) {
-                //     require.push(superCtor);
-                //     console.log(require);
-                // };
+                if (require.indexOf(superCtor) < 0) {
+                    require.push(superCtor);
+                };
                 // console.log("[inherit push]", ctor, superCtor, this.name, this.inherites);
             }
             var module = this;
@@ -227,9 +226,14 @@ VCL.prototype.load_modules = function (modules) {
                     module.exports[name] = func;
                 }
                 if (typeof module.require === 'string') {
-                    require = [module.require];
-                } else if (Array.isArray(module.require)) {
-                    require = require.concat(module.require);
+                    module.require = [module.require];
+                };
+                if (Array.isArray(module.require)) {
+                    for (var i = 0; i < module.require.length; i++) {
+                        if (require.indexOf(module.require[i]) < 0) {
+                            require = require.concat(module.require[i]);
+                        }
+                    }
                 };
                 for (var name in module.exports) {
                     var cls = module.exports[name];
