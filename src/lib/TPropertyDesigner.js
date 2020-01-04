@@ -14,14 +14,13 @@ function Label1Click(Sender) {
 };
 
 module.inherit("TPropertyDesigner", "TForm");
-// module.require = ["TForm"];
 module.exports = TPropertyDesigner;
 
 TPropertyDesigner.prototype.dfm = {
     cls      : "TPropertyDesigner",
-    Left     : 100,
+    Left     : 10,
     Top      : 100,
-    Width    : 300,
+    Width    : 150,
     Height   : 600,
     Caption  : "TPropertyDesigner",
     OnCreate : 'FormCreate',

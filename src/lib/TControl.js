@@ -44,7 +44,7 @@ function TControl(AOwner) {
     this.div.data("vcl", this);
     this.init_css();
     this.div.attr("draggable", "false");
-    this.div.click(this.on_click.bind(this));
+    // this.div.click(this.on_click.bind(this));
     this.FOnClick = null;
     this.FAnchors = {
         akLeft : true,
@@ -54,7 +54,7 @@ function TControl(AOwner) {
         this.div.appendTo(AOwner.div);
     }
 };
-TControl.Published = ['Left', 'Top', 'Width', 'Height'];
+TControl.Published = ['Left', 'Top', 'Width', 'Height', 'OnClick'];
 
 TControl.prototype.on_click = function (e) {
     // console.log('[mouse move]', this.Caption);

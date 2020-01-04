@@ -3,12 +3,11 @@ function TForm2(AOwner) {
 };
 
 module.inherit("TForm2", "TForm");
-module.require = ["TForm"];
 module.exports = TForm2;
 
 TForm2.prototype.dfm = {
     cls      : "TForm2",
-    Left     : 500,
+    Left     : 200,
     Top      : 100,
     Width    : 500,
     Height   : 500,

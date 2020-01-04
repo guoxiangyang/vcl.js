@@ -20,18 +20,15 @@
     </body>
     <script>
      $(document).ready(function () {
-         document.addEventListener('click', function (e) {
-             console.log("click:", event.target);
-             /* e.stopPropagation(); */
-             /* e.preventDefault(); */
-         }, true);
+         /* document.addEventListener('click', function (e) {
+          *     console.log("click:", event.target);
+          *     e.stopPropagation();
+          *     e.preventDefault();
+          * }, true); */
          var vcl = new VCL();
          vcl.init("screen", function (err, cls) {
-             vcl.require(["TForm2"], function (err, cls) {
-                 var form2  = vcl.create("TForm2");
-             });
-             vcl.require(["TPropertyDesigner"], function (err, cls) {
-                 var form2  = vcl.create("TPropertyDesigner");
+             vcl.require("TMainForm", function (err, cls) {
+                 var MainForm = vcl.create("TMainForm");
              });
          });
      });

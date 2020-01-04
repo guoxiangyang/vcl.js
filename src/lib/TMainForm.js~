@@ -7,6 +7,7 @@ TFormDesigner.prototype.load = function (cls) {
         this.form  = this.vcl.create(cls);
         this.form.Designer = this;
     }.bind(this));
+    
 };
 function Banner1Click(Sender) {
     // console.log(this);
