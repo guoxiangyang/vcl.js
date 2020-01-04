@@ -14,7 +14,6 @@ function Label1Click(Sender) {
 };
 
 module.inherit("TPropertyDesigner", "TForm");
-module.require = ["TForm"];
 module.exports = TPropertyDesigner;
 
 TPropertyDesigner.prototype.dfm = {

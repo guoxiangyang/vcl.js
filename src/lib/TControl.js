@@ -292,7 +292,11 @@ TControl.prototype.Invalidate = function () {
 
 // procedure TControl.RequestAlign;
 TControl.prototype.RequestAlign = function () {
-    if (this.Parent) { this.Parent.AlignControl(this); };
+    if (this.Parent) {
+        this.Parent.AlignControl(this);
+    } else if (this.AlignControl) {
+        this.AlignControl();
+    }
 }
 
 

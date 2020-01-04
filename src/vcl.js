@@ -9,20 +9,7 @@ function VCL() {
     this.set.from_array = this.array_to_set.bind(this);
 };
 
-VCL.prototype.init = function (callback) {
-    // $(document).on({
-    //     "contextmenu": function (e) {
-    //         var v = $(e.target).data("vcl");
-    //         if (v && ['TMemo', 'TEdit', 'TComboBox'].indexOf(v.cls) >= 0) {
-    //         } else {
-    //             e.preventDefault();
-    //         }
-    //         if (v) {
-    //             console.log(v.cls);
-    //         }
-    //     }
-    // });
-    
+VCL.prototype.init = function (screenid, callback) {
     this.require(["TApplication", "TScreen"], function (err, cls) {
         if (err) {
             console.error("[VCL] init fail", err);
@@ -30,7 +17,7 @@ VCL.prototype.init = function (callback) {
         } else {
             console.log("[VCL] init ok");
             this.Application = this.create("TApplication");
-            this.Screen      = this.create("TScreen");
+            this.Screen      = this.create("TScreen", null, screenid);
             callback();
         }
     }.bind(this));
@@ -208,11 +195,16 @@ VCL.prototype.load_modules = function (modules) {
         var url = "lib/" + name + '.js';
         module.url = url;
         $.get(url, function (data) {
+            var require = [];
             function inherit(ctor, superCtor) {
                 this.inherites.push({
                     ctor      : ctor,
                     superCtor : superCtor
                 });
+                // if (require.indexOf(superCtor) < 0) {
+                //     require.push(superCtor);
+                //     console.log(require);
+                // };
                 // console.log("[inherit push]", ctor, superCtor, this.name, this.inherites);
             }
             var module = this;
@@ -234,10 +226,11 @@ VCL.prototype.load_modules = function (modules) {
                     module.exports = {};
                     module.exports[name] = func;
                 }
-                var require = module.require;
-                if (typeof require === 'string') {
-                    require = [require];
-                }
+                if (typeof module.require === 'string') {
+                    require = [module.require];
+                } else if (Array.isArray(module.require)) {
+                    require = require.concat(module.require);
+                };
                 for (var name in module.exports) {
                     var cls = module.exports[name];
                     if (typeof cls === 'function') {
@@ -251,6 +244,7 @@ VCL.prototype.load_modules = function (modules) {
                                         if (require.indexOf(cls) < 0) {
                                             require.push(cls);
                                         }
+                                        enum_require(value);
                                     }
                                 }
                             };

@@ -104,7 +104,15 @@ TCustomForm.prototype.hide_anchors = function () {
     };
 };
 
-
+// TCustomForm.prototype.RequestAlign = function () {
+//     this.vcl.Cls("TScrollingWinControl").RequestAlign.call(this);
+//     // this.vcl.Cls("TScrollingWinControl").call(this);
+//     // if (!Parent) {
+//     //     Screen.AlignFormo(Self)
+//     // } else {
+//     //     TScrollingWinControl.RequestAlign();
+//     // }
+// }
 module.inherit("TCustomForm", "TScrollingWinControl");
 module.require = "TScrollingWinControl";
 module.exports = TCustomForm;
