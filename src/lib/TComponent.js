@@ -1,7 +1,7 @@
 var __super = "TPersistent";
 function TComponent(AOwner) {
     this.vcl.Cls(__super).call(this);
-    this.ComponentState = {};
+    this.ComponentState  = {};
     this.FComponentStyle = {};
     this.FComponents  = [];
     this.FOwner       = null;
@@ -16,17 +16,36 @@ TComponent.published = ['Name'];
 
 Object.defineProperties(TComponent.prototype, {
     Owner : {
-        get : function () { return this.FOwner; }
+        get : function () { return this.FOwner; },
+    },
+    Components : {
+        get : function () { return this.FComponents; },
+    },
+    Name : {
+        get : function () { return this.FName; },
+        set : function (Value) { this.SetName(Value); },
     }
-    // Name : {
-    //     get : function () { return this.FName; }
-    //     set : this.SetName;
-    // }
 });
 
-// TComponent.prototype.SetName = function (Value) {
-//     this.FName = Value;
-// };
+TComponent.prototype.SetName = function (Value) {
+    this.FName = Value;
+};
+TComponent.prototype.SetDesigning = function (Value, SetChildren) {
+    if (typeof SetChildren === 'undefined') {
+        SetChildren = true;
+    }
+    if (Value) {
+        this.Include(this.ComponentState, 'csDesigning')
+    } else {
+        this.Exclude(this.ComponentState, 'csDesigning');
+    }
+    if (SetChildren) {
+        for (var i = 0; i < this.Components.length; i++) {
+            this.Components[i].SetDesigning(Value);
+        }
+    }
+}
+
 TComponent.prototype.InsertComponent = function (AComponent) {
     AComponent.ValidateContainer(this);
     this.ValidateRename(AComponent, '', AComponent.FName);
@@ -46,8 +65,6 @@ TComponent.prototype._Insert = function (AComponent) {
     AComponent.FOwner = this;
 };
 TComponent.prototype.SetReference = function () {
-};
-TComponent.prototype.SetDesigning = function () {
 };
 TComponent.prototype.Notification = function () {
 };

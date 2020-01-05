@@ -188,11 +188,9 @@ Object.defineProperties(TControl.prototype, {
         get : function () { return this.FOnClick;},
         set : function (Value) {
             if (typeof Value === 'function') {
-                console.log(typeof Value, Value);
                 this.FOnClick = Value;
                 var form = this;
                 while (form.Parent) { form = form.Parent;};
-                console.log("form=", form);
                 this.div.click(Value.bind(form));
             }
         }

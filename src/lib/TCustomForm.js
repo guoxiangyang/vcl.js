@@ -1,5 +1,6 @@
 
 function TCustomForm(AOwner) {
+    this.FDesigner = null;
     this.CreateNew(AOwner);
     this.FFormState = {};
     this.Include(this.FFormState, 'fsCreating');
@@ -9,6 +10,13 @@ function TCustomForm(AOwner) {
     this.Exclude(this.FFormState, 'fsCreating');
 };
 TCustomForm.Published = ['Align', 'Anchors', 'Caption'];
+
+Object.defineProperties(TCustomForm.prototype, {
+    Designer : {
+        get : function () { return this.FDesigner; },
+        set : function (Value) { this.FDesigner = Value; }
+    }
+});
 
 TCustomForm.prototype.CreateNew = function (AOwner) {
     this.vcl.Cls("TScrollingWinControl").call(this, AOwner);
@@ -95,7 +103,7 @@ TCustomForm.prototype.on_anchor_drag = function (event, ui) {
     var Sender = e.data("sender");
     var origin = e.data("origin");
     Sender.Height = origin.Height + y;
-    console.log("[down]", e.attr("id"), Sender.Caption, `x=${x} y=${y}`);
+    // console.log("[down]", e.attr("id"), Sender.Caption, `x=${x} y=${y}`);
 };
 TCustomForm.prototype.hide_anchors = function () {
     var e = this.div.find("#anchor");

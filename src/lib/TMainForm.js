@@ -9,10 +9,10 @@ TMainForm.prototype.load = function (cls) {
     this.vcl.require([cls], function (err, cls2) {
         this.form  = this.vcl.create(cls);
         this.form.Designer = this;
+        this.form.SetDesigning(true);
     }.bind(this));
 };
 function Button1Click(Sender) {
-    console.log("Button1Click");
     this.load("TForm2");
 };
 module.inherit("TMainForm", "TForm");
